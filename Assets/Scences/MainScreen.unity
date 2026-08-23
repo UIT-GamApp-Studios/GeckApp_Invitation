@@ -1559,8 +1559,37 @@ MonoBehaviour:
   - {fileID: 361323033}
   - {fileID: 1418860881}
   - {fileID: 1970967069}
-  - {fileID: 1328780788}
-  - {fileID: 385338624}
+--- !u!114 &1839743469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839743462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b2c3d4e5f60718293a4b5c6d7e8f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GachaIntroSequence
+  logoAnimator: {fileID: 1839743468}
+  gachaIcon: {fileID: 926702465}
+  gachaSpinRevolutions: 3
+  gachaSpinDurationPerRev: 0.35
+  gachaSpinEaseTime: 0.35
+  gachaIdleAfterSpin: 0.25
+  revealButtons:
+  - {fileID: 842098245}
+  - {fileID: 1226667137}
+  - {fileID: 1728367578}
+  betweenButtonDelay: 0.45
+  buttonRevealDuration: 0.45
+  buttonOvershootScale: 1.15
+  buttonDriftDistance: 18
+  shakeDuration: 0.4
+  shakeMagnitude: 6
+  shakeFrequency: 22
+  revealAudio: {fileID: 0}
+  tickAudio: {fileID: 0}
 --- !u!1 &1869776059
 GameObject:
   m_ObjectHideFlags: 0

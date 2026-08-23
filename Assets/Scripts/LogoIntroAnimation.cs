@@ -31,6 +31,8 @@ public class LogoIntroAnimation : MonoBehaviour
     private Vector2 finalPosition;
     private Vector3 finalScale;
     private bool hasAnimated = false;
+
+    public bool HasFinishedIntro { get; private set; } = false;
     
     void Awake()
     {
@@ -141,6 +143,7 @@ public class LogoIntroAnimation : MonoBehaviour
         
         SetMainScreenAlpha(1f);
         SetMainScreenInteractable(true);
+        HasFinishedIntro = true;
     }
     
     void SetMainScreenAlpha(float alpha)
