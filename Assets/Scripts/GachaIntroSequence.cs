@@ -95,6 +95,7 @@ public class GachaIntroSequence : MonoBehaviour
     {
         if (gachaIcon != null)
         {
+            ActivateGachaIcon();
             yield return StartCoroutine(SpinGachaIcon());
             yield return new WaitForSeconds(gachaIdleAfterSpin);
         }
@@ -225,6 +226,25 @@ public class GachaIntroSequence : MonoBehaviour
             btn.localScale = Vector3.one * 0.6f;
             btn.gameObject.SetActive(false);
         }
+    }
+
+    private void ActivateGachaIcon()
+    {
+        if (gachaIcon == null) return;
+
+        // Make sure the gacha icon is active and visible before the spin starts.
+        if (!gachaIcon.gameObject.activeSelf)
+        {
+            gachaIcon.gameObject.SetActive(true);
+        }
+
+        var cg = EnsureCanvasGroup(gachaIcon);
+        cg.alpha = 1f;
+        cg.interactable = true;
+        cg.blocksRaycasts = true;
+
+        gachaIcon.localRotation = Quaternion.identity;
+        gachaIcon.localScale = Vector3.one;
     }
 
     private IEnumerator RevealSingleButton(RectTransform btn)
