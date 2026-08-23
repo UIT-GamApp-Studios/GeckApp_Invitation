@@ -1361,6 +1361,8 @@ GameObject:
   - component: {fileID: 1839743465}
   - component: {fileID: 1839743464}
   - component: {fileID: 1839743466}
+  - component: {fileID: 1839743468}
+  - component: {fileID: 1839743467}
   m_Layer: 0
   m_Name: Logo
   m_TagString: Untagged
@@ -1451,6 +1453,114 @@ MonoBehaviour:
   pulseSpeed: 1
   secondaryColor: {r: 1, g: 0.6, b: 0.3, a: 1}
   secondaryIntensity: 0.25
+--- !u!225 &1839743467
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839743462}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1839743468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839743462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab5928d709a2a64292d2ae5993ca01c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LogoIntroAnimation
+  introDelay: 0.2
+  moveDuration: 1
+  holdDuration: 0.3
+  mainScreenFadeInDuration: 0.6
+  centerPosition: {x: 0, y: 0}
+  introScale: 1.4
+  moveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  fadeInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  mainScreenElements:
+  - {fileID: 361323033}
+  - {fileID: 1418860881}
+  - {fileID: 1970967069}
+  - {fileID: 1328780788}
+  - {fileID: 385338624}
 --- !u!1 &1869776059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,8 +1715,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -101, y: 61.191}
-  m_SizeDelta: {x: 464.2824, y: 342.6176}
+  m_AnchoredPosition: {x: -131, y: 43.895}
+  m_SizeDelta: {x: 511.1574, y: 377.209}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1970967071
 MonoBehaviour:
