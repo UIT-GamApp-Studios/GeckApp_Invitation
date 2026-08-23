@@ -63,9 +63,8 @@ public class LogoIntroAnimation : MonoBehaviour
         logoCanvasGroup.alpha = 1f;
         logoCanvasGroup.blocksRaycasts = true;
         
-        // 2. Hide all main screen elements initially
-        SetMainScreenAlpha(0f);
-        SetMainScreenInteractable(false);
+        // 2. Hide all main screen elements immediately - set inactive and zero alpha
+        HideMainScreenImmediate();
         
         // Small delay to ensure render setup
         yield return new WaitForSeconds(introDelay);
@@ -95,8 +94,31 @@ public class LogoIntroAnimation : MonoBehaviour
         // 4. Hold at final position briefly
         yield return new WaitForSeconds(holdDuration);
         
-        // 5. Fade in main screen elements
+        // 5. Activate and fade in main screen elements
         yield return StartCoroutine(FadeInMainScreen());
+    }
+    
+    void HideMainScreenImmediate()
+    {
+        if (mainScreenElements == null) return;
+        
+        foreach (var obj in mainScreenElements)
+        {
+            if (obj == null) continue;
+            
+            // Ensure CanvasGroup exists and is fully transparent
+            var cg = obj.GetComponent<CanvasGroup>();
+            if (cg == null)
+            {
+                cg = obj.AddComponent<CanvasGroup>();
+            }
+            cg.alpha = 0f;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
+            
+            // Disable the GameObject so nothing renders during intro
+            obj.SetActive(false);
+        }
     }
     
     IEnumerator FadeInMainScreen()
