@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: MediaGameConfig
   m_EditorClassIdentifier: Assembly-CSharp::MediaGameConfig
   targetScore: 10
-  timeLimit: 60
+  timeLimit: 30
   timeWarningThreshold: 5
-  lensSpeed: 10
+  lensSpeed: 15
   lensRadius: 1.2
-  lensAcceleration: 10
-  lensDeceleration: 3
+  lensAcceleration: 25
+  lensDeceleration: 2
   bounceMultiplier: 2
-  mascotSpeed: 4
+  mascotSpeed: 5
   mascotRadius: 0.5
   mascotSpawnInterval: 1.5
   maxActiveMascots: 4
