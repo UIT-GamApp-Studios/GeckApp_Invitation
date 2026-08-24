@@ -11,6 +11,9 @@ public class MediaGameConfig : ScriptableObject
     [Header("Lens Settings")]
     public float lensSpeed = 5f;
     public float lensRadius = 1.2f;
+    public float lensAcceleration = 10f;
+    public float lensDeceleration = 5f;
+    public float bounceMultiplier = 1.5f;
 
     [Header("Mascot Settings")]
     public float mascotSpeed = 3f;
@@ -22,4 +25,14 @@ public class MediaGameConfig : ScriptableObject
     [Header("Photo Precision")]
     [Tooltip("Độ dung sai cho phép lệch một chút vẫn tính Perfect")]
     public float perfectTolerance = 0.2f; 
+
+    [Header("Photo Feedback UI Settings")]
+    public string perfectText = "PERFECT!";
+    public Color perfectColor = Color.green;
+
+    public string goodText = "GOOD!";
+    public Color goodColor = Color.yellow;
+
+    public string missText = "MISS!";
+    public Color missColor = Color.red;
 }

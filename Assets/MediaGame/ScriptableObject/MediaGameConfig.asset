@@ -15,11 +15,20 @@ MonoBehaviour:
   targetScore: 10
   timeLimit: 60
   timeWarningThreshold: 5
-  lensSpeed: 5
+  lensSpeed: 10
   lensRadius: 1.2
-  mascotSpeed: 2
+  lensAcceleration: 10
+  lensDeceleration: 3
+  bounceMultiplier: 2
+  mascotSpeed: 4
   mascotRadius: 0.5
   mascotSpawnInterval: 1.5
   maxActiveMascots: 4
   spawnOverlapRadius: 1
   perfectTolerance: 0.2
+  perfectText: PERFECT!
+  perfectColor: {r: 0, g: 1, b: 0, a: 1}
+  goodText: GOOD!
+  goodColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  missText: MISS!
+  missColor: {r: 1, g: 0, b: 0, a: 1}
