@@ -60,7 +60,7 @@ public class MediaUIManager : MonoBehaviour
         if (timerText != null && gameManager != null)
         {
             int timeToDisplay = Mathf.Max(0, Mathf.FloorToInt(gameManager.RemainingTime));
-            timerText.text = timeToDisplay.ToString();
+            timerText.text = $"Time: {timeToDisplay:D2}";
         }
     }
 
@@ -76,7 +76,7 @@ public class MediaUIManager : MonoBehaviour
     {
         if (timerText != null && !isWin)
         {
-            timerText.text = "0";
+            timerText.text = "Time: 00";
         }
 
         if (photoButton != null)

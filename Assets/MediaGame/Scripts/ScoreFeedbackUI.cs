@@ -5,6 +5,7 @@ using DG.Tweening;
 public class ScoreFeedbackUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private int maxScore = 10;
 
     [Header("Punch Effect Settings")]
     [SerializeField] private Vector3 punchScale = new Vector3(0.35f, 0.35f, 0f);
@@ -28,7 +29,7 @@ public class ScoreFeedbackUI : MonoBehaviour
     {
         if (scoreText == null) return;
 
-        scoreText.text = currentScore.ToString();
+        scoreText.text = $"{currentScore}/{maxScore}";
 
         if (result == PhotoResult.Perfect)
         {
