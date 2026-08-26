@@ -15,11 +15,11 @@ MonoBehaviour:
   targetScore: 10
   timeLimit: 30
   timeWarningThreshold: 5
-  lensSpeed: 15
+  lensSpeed: 10
   lensRadius: 1.2
-  lensAcceleration: 25
+  lensAcceleration: 15
   lensDeceleration: 2
-  bounceMultiplier: 2
+  bounceMultiplier: 0.5
   mascotSpeed: 5
   mascotRadius: 0.5
   mascotSpawnInterval: 1.5
