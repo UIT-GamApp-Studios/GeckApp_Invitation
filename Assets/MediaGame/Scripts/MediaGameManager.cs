@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MediaGameManager : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class MediaGameManager : MonoBehaviour
     [SerializeField] private MascotSpawner spawner;
 
     [Header("End Game Delay")]
-    [Tooltip("Khoảng thời gian chờ sau khi đồng hồ về 0 rồi mới PauseGame")]
     [SerializeField] private float gameOverDelay = 1.0f;
 
     public int CurrentScore { get; private set; } = 0;
@@ -16,6 +16,16 @@ public class MediaGameManager : MonoBehaviour
     public bool IsGameActive { get; private set; } = false;
 
     private bool hasTriggeredWarning = false;
+
+    private void OnEnable()
+    {
+        GameResultManager.OnPlayAgainRequested += HandlePlayAgain;
+    }
+
+    private void OnDisable()
+    {
+        GameResultManager.OnPlayAgainRequested -= HandlePlayAgain;
+    }
 
     private void Start()
     {
@@ -102,27 +112,35 @@ public class MediaGameManager : MonoBehaviour
         spawner.StopSpawning();
         GameEvents.OnGameEnd?.Invoke(isWin);
 
+        StartCoroutine(EndGameRoutine(isWin));
+    }
+
+    private IEnumerator EndGameRoutine(bool isWin)
+    {
+        yield return new WaitForSecondsRealtime(gameOverDelay);
+        
+        PauseGame();
+
         if (isWin)
         {
-            Debug.Log("Win!");
+            GameResultManager.Instance.ShowWin();
         }
         else
         {
-            Debug.Log("Lose!");
+            GameResultManager.Instance.ShowLose();
         }
-
-        StartCoroutine(PauseGameRoutine());
-    }
-
-    private IEnumerator PauseGameRoutine()
-    {
-        yield return new WaitForSecondsRealtime(gameOverDelay);
-        PauseGame();
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0f;
         Debug.Log("Game Paused!");
+    }
+
+    private void HandlePlayAgain()
+    {
+        Time.timeScale = 1.0f;
+        GameResultManager.Instance.HideAllPanels();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

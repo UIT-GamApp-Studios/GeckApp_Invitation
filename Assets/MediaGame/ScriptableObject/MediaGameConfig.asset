@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93ebb64381a58c43a04b3a38510d854, type: 3}
   m_Name: MediaGameConfig
   m_EditorClassIdentifier: Assembly-CSharp::MediaGameConfig
-  targetScore: 10
+  targetScore: 1
   timeLimit: 30
   timeWarningThreshold: 5
   lensSpeed: 10
