@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameResultManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GameResultManager : MonoBehaviour
     [SerializeField] private Button losePlayAgainButton;
     [SerializeField] private Button loseMenuButton;
 
+    [Header("Scene Settings")]
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
+
     private bool canClickWinToMenu = false;
 
     private void Awake()
@@ -28,6 +32,7 @@ public class GameResultManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SetupCanvasSorting();
         }
         else
         {
@@ -47,16 +52,63 @@ public class GameResultManager : MonoBehaviour
         HideAllPanels();
     }
 
+    private void SetupCanvasSorting()
+    {
+        Canvas canvas = GetComponentInChildren<Canvas>();
+        if (canvas != null)
+        {
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 9990; 
+        }
+    }
+
     private void ClickPlayAgain()
     {
-        OnPlayAgainRequested?.Invoke();
+        if (SceneTransition.Instance != null)
+        {
+            SceneTransition.Instance.PlayTransition(() =>
+            {
+                Time.timeScale = 1f;
+                HideAllPanels();
+                
+                Scene activeScene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(activeScene.name);
+
+                OnPlayAgainRequested?.Invoke();
+            });
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            HideAllPanels();
+            OnPlayAgainRequested?.Invoke();
+        }
     }
 
     private void ReturnToMenu()
     {
-        if (winPanel.activeSelf && !canClickWinToMenu) return;
-        
-        Debug.Log("[GameResultManager] Return To Menu Clicked!");
+        if (winPanel != null && winPanel.activeSelf && !canClickWinToMenu) return;
+
+        if (SceneController.Instance != null)
+        {
+            SceneController.Instance.ChangeScene(mainMenuSceneName);
+            HideAllPanels();
+        }
+        else if (SceneTransition.Instance != null)
+        {
+            SceneTransition.Instance.PlayTransition(() =>
+            {
+                Time.timeScale = 1f;
+                HideAllPanels();
+                SceneManager.LoadScene(mainMenuSceneName);
+            });
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            HideAllPanels();
+            SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
 
     public void HideAllPanels()
@@ -69,7 +121,7 @@ public class GameResultManager : MonoBehaviour
     public void ShowWin()
     {
         HideAllPanels();
-        winPanel.SetActive(true);
+        if (winPanel != null) winPanel.SetActive(true);
 
         if (winAnimation != null)
         {
@@ -84,6 +136,6 @@ public class GameResultManager : MonoBehaviour
     public void ShowLose()
     {
         HideAllPanels();
-        losePanel.SetActive(true);
+        if (losePanel != null) losePanel.SetActive(true);
     }
 }
