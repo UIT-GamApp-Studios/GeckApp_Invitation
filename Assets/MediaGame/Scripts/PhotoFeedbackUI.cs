@@ -18,6 +18,11 @@ public class PhotoFeedbackUI : MonoBehaviour
     private Vector2 baseAnchoredPos;
     private Sequence currentSequence;
 
+    [Header("Audio Feedback Setup")]
+    [SerializeField] private SoundFeedback perfectSound;
+    [SerializeField] private SoundFeedback goodSound;
+    [SerializeField] private SoundFeedback missSound;
+
     private void Awake()
     {
         if (feedbackText != null)
@@ -49,14 +54,19 @@ public class PhotoFeedbackUI : MonoBehaviour
             case PhotoResult.Perfect:
                 feedbackText.text = config.perfectText;
                 feedbackText.color = config.perfectColor;
+                if (perfectSound != null) perfectSound.PlaySound();
                 break;
+
             case PhotoResult.Good:
                 feedbackText.text = config.goodText;
                 feedbackText.color = config.goodColor;
+                if (goodSound != null) goodSound.PlaySound();
                 break;
+
             case PhotoResult.Miss:
                 feedbackText.text = config.missText;
                 feedbackText.color = config.missColor;
+                if (missSound != null) missSound.PlaySound();
                 break;
         }
 
