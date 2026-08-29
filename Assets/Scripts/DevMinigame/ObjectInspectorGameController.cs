@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
+[RequireComponent(typeof(AudioSource))]
 public class ObjectInspectorGameController : MonoBehaviour
 {
     [Header("SelectFrame Toggles (Interactable)")]
@@ -25,6 +26,14 @@ public class ObjectInspectorGameController : MonoBehaviour
     [SerializeField] private Image objectiveImage; 
     [SerializeField] private TextMeshProUGUI timerText;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip sfxWin;
+    [SerializeField] private AudioClip sfxLose;
+    [SerializeField] private AudioClip sfxToggleClick;
+    [SerializeField] private AudioClip sfxCorrect;
+    [SerializeField] private AudioClip sfxIncorrect;
+
     [Header("Settings & Database")]
     [SerializeField] private float timeLimit = 15f;
     [SerializeField] private int requiredStreak = 3;
@@ -41,6 +50,9 @@ public class ObjectInspectorGameController : MonoBehaviour
 
     private void Start()
     {
+        // Automatically grab the AudioSource if it wasn't assigned in the Inspector
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+
         if (hintFlyToggleUI != null && hintFlyToggleUI.Toggle != null) hintFlyToggleUI.Toggle.interactable = false;
         if (hintSwimToggleUI != null && hintSwimToggleUI.Toggle != null) hintSwimToggleUI.Toggle.interactable = false;
         if (hintAttackToggleUI != null && hintAttackToggleUI.Toggle != null) hintAttackToggleUI.Toggle.interactable = false;
@@ -135,9 +147,19 @@ public class ObjectInspectorGameController : MonoBehaviour
         if (streak3UI != null) streak3UI.SetState(currentStreak >= 2);
     }
 
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
     private void CheckPlayerInput(string toggleType, bool newValue)
     {
         if (!isPlaying) return;
+
+        PlaySFX(sfxToggleClick);
 
         bool isMistake = false;
 
@@ -147,6 +169,7 @@ public class ObjectInspectorGameController : MonoBehaviour
 
         if (isMistake)
         {
+            PlaySFX(sfxIncorrect);
             currentStreak = 0;
             UpdateStreakUI();
             return;
@@ -171,10 +194,11 @@ public class ObjectInspectorGameController : MonoBehaviour
 
         if (currentStreak >= requiredStreak)
         {
-            GameOver(true);
+            GameOver(true); 
         }
         else
         {
+            PlaySFX(sfxCorrect);
             PickNextTarget();
         }
     }
@@ -183,11 +207,26 @@ public class ObjectInspectorGameController : MonoBehaviour
     {
         isPlaying = false;
 
-        if (isWin && !hasEarnedToken)
+        if (flyToggleUI != null) flyToggleUI.Toggle.interactable = false;
+        if (swimToggleUI != null) swimToggleUI.Toggle.interactable = false;
+        if (attackToggleUI != null) attackToggleUI.Toggle.interactable = false;
+
+        if (isWin)
         {
-            hasEarnedToken = true;
-            Debug.Log("Token earned");
-            OnTokenEarned?.Invoke();
+            if (!hasEarnedToken)
+            {
+                hasEarnedToken = true;
+                Debug.Log("Token earned");
+                OnTokenEarned?.Invoke();
+            }
+
+            PlaySFX(sfxWin);
+            GameResultManager.Instance.ShowWin();
+        }
+        else
+        {
+            PlaySFX(sfxLose);
+            GameResultManager.Instance.ShowLose();
         }
     }
 }
