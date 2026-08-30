@@ -16,6 +16,7 @@ Shader "UI/LogoLightEffect"
         _SweepIntensity ("Sweep Intensity", Range(0,5)) = 1.5
         _SweepSoftness ("Sweep Softness", Range(0.01,0.5)) = 0.04
         _SweepSpeed ("Sweep Speed", Range(0.1,5)) = 1.0
+        _SweepDirection ("Sweep Direction (0=Ngang trai-phai, 1=Cheo duoi trai len tren phai)", Range(0,1)) = 0
         
         _PulseIntensity ("Pulse Intensity", Range(0,2)) = 0.15
         _PulseSpeed ("Pulse Speed", Range(0.1,5)) = 1.0
@@ -109,6 +110,7 @@ Shader "UI/LogoLightEffect"
             float _SweepIntensity;
             float _SweepSoftness;
             float _SweepSpeed;
+            float _SweepDirection;
             
             float _PulseIntensity;
             float _PulseSpeed;
@@ -149,11 +151,16 @@ Shader "UI/LogoLightEffect"
                 float2 uv = IN.texcoord;
                 float t = _Time.y;
                 
-                // Sweep position moves left to right, loops seamlessly
+                // Sweep position moves along the sweep axis, loops seamlessly
                 float sweepPos = frac(t * _SweepSpeed);
                 
+                // Sweep axis: 0 = ngang (trai->phai theo uv.x), 1 = cheo (goc duoi trai -> goc tren phai)
+                float horizontalCoord = uv.x;
+                float diagonalCoord = saturate((uv.x + uv.y) * 0.5);
+                float sweepCoord = lerp(horizontalCoord, diagonalCoord, _SweepDirection);
+                
                 // Narrow sweep - sharp light line with tight soft edges
-                float distFromSweep = abs(uv.x - sweepPos);
+                float distFromSweep = abs(sweepCoord - sweepPos);
                 
                 // Main narrow bright band - sharp falloff
                 float sweep = 1.0 - smoothstep(_SweepWidth - _SweepSoftness, _SweepWidth, distFromSweep);

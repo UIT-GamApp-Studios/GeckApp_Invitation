@@ -28,6 +28,9 @@ public class LogoLightEffect : MonoBehaviour
     public float sweepSoftness = 0.04f;
     [Range(0.1f, 5f)]
     public float sweepSpeed = 0.8f;
+    [Tooltip("0 = chạy ngang trái sang phải (mặc định, dùng cho logo). 1 = chạy chéo từ góc dưới trái lên góc trên phải (dùng cho thẻ đặc biệt).")]
+    [Range(0f, 1f)]
+    public float sweepDirection = 0f;
     
     [Header("Pulse Settings")]
     [Range(0f, 2f)]
@@ -53,6 +56,7 @@ public class LogoLightEffect : MonoBehaviour
     private static readonly int SweepIntensityID = Shader.PropertyToID("_SweepIntensity");
     private static readonly int SweepSoftnessID = Shader.PropertyToID("_SweepSoftness");
     private static readonly int SweepSpeedID = Shader.PropertyToID("_SweepSpeed");
+    private static readonly int SweepDirectionID = Shader.PropertyToID("_SweepDirection");
     private static readonly int PulseIntensityID = Shader.PropertyToID("_PulseIntensity");
     private static readonly int PulseSpeedID = Shader.PropertyToID("_PulseSpeed");
     private static readonly int SecondaryColorID = Shader.PropertyToID("_SecondaryColor");
@@ -119,12 +123,23 @@ public class LogoLightEffect : MonoBehaviour
         runtimeMaterial.SetFloat(SweepIntensityID, sweepIntensity);
         runtimeMaterial.SetFloat(SweepSoftnessID, sweepSoftness);
         runtimeMaterial.SetFloat(SweepSpeedID, sweepSpeed);
+        runtimeMaterial.SetFloat(SweepDirectionID, sweepDirection);
         
         runtimeMaterial.SetFloat(PulseIntensityID, pulseIntensity);
         runtimeMaterial.SetFloat(PulseSpeedID, pulseSpeed);
         
         runtimeMaterial.SetColor(SecondaryColorID, secondaryColor);
         runtimeMaterial.SetFloat(SecondaryIntensityID, secondaryIntensity);
+    }
+    
+    void OnDisable()
+    {
+        // Cho phép bật/tắt component này (vd: chỉ bật khi thẻ đặc biệt xuất hiện)
+        // mà không để lại material cũ dính trên Image.
+        if (image != null && runtimeMaterial != null && image.material == runtimeMaterial)
+        {
+            image.material = null;
+        }
     }
     
     void OnDestroy()
