@@ -246,12 +246,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0abf1d3c8b0f5141a123a05026c40f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoLightEffect
-  glowColor: {r: 0, g: 1, b: 1, a: 1}
+  glowColor: {r: 1, g: 0.82, b: 0.2, a: 1}
   glowIntensity: 0.28
   glowPower: 1.5
   glowSize: 0.012
-  sweepColor: {r: 1, g: 1, b: 1, a: 1}
-  sweepHighlight: {r: 1, g: 0.95, b: 0.9, a: 1}
+  sweepColor: {r: 1, g: 0.92, b: 0.55, a: 1}
+  sweepHighlight: {r: 1, g: 1, b: 0.85, a: 1}
   sweepWidth: 0.08
   sweepIntensity: 0.8
   sweepSoftness: 0.04
@@ -261,6 +261,8 @@ MonoBehaviour:
   pulseSpeed: 1
   secondaryColor: {r: 1, g: 0.6, b: 0.3, a: 1}
   secondaryIntensity: 0.25
+  revealBoostMultiplier: 2.2
+  revealSettleDuration: 0.35
 --- !u!1 &230553650
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GachaManager
   specialCard: {fileID: 21300000, guid: d6e2c642937e84c98b94e6680bec5efb, type: 3}
   specialCardRate: 0.01
+  specialCardRevealDelay: 0.3
   normalCardPool:
   - {fileID: 21300000, guid: 74b58a2e929a541d09522fecf8320770, type: 3}
   - {fileID: 21300000, guid: 4161717f0a43343f68726a0fc077e20b, type: 3}
@@ -556,6 +559,13 @@ MonoBehaviour:
   - {fileID: 1078825920}
   - {fileID: 693972391}
   delayBetweenCards: 3
+  screenDimmer: {fileID: 1311053013}
+  dimFadeInDuration: 0.4
+  dimFadeOutDuration: 0.6
+  godRays: {fileID: 682071259}
+  audioSource: {fileID: 1395423828}
+  normalCardAppearSound: {fileID: 8300000, guid: 4c57835cf1060490a8b8eb7684ed67a4, type: 3}
+  specialCardAppearSound: {fileID: 8300000, guid: c19a5d987670340b8b7e89fafb96dd23, type: 3}
 --- !u!4 &560678559
 Transform:
   m_ObjectHideFlags: 0
@@ -571,6 +581,105 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &682071258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682071262}
+  - component: {fileID: 682071261}
+  - component: {fileID: 682071259}
+  - component: {fileID: 682071260}
+  m_Layer: 5
+  m_Name: Godray
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &682071259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682071258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160ff14f3c505411db3f0e629cd6984f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GachaGodRays
+  rayColor: {r: 1, g: 0.85, b: 0.4, a: 1}
+  rayCount: 16
+  raySharpness: 4.7
+  rotationSpeed: 0.06
+  intensity: 0.6
+  innerRadius: 0.183
+  outerRadius: 1.31
+  pulseIntensity: 0.29
+  pulseSpeed: 0.6
+  revealBoostMultiplier: 2.18
+  revealSettleDuration: 0.6
+--- !u!114 &682071260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682071258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &682071261
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682071258}
+  m_CullTransparentMesh: 1
+--- !u!224 &682071262
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682071258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 780604552}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0024657, y: -0.00086275}
+  m_SizeDelta: {x: 799.99, y: 464.33}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &693972386
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,12 +807,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0abf1d3c8b0f5141a123a05026c40f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoLightEffect
-  glowColor: {r: 0, g: 1, b: 1, a: 1}
+  glowColor: {r: 1, g: 0.82, b: 0.2, a: 1}
   glowIntensity: 0.6
   glowPower: 1.5
   glowSize: 0.012
-  sweepColor: {r: 1, g: 1, b: 1, a: 1}
-  sweepHighlight: {r: 1, g: 0.95, b: 0.9, a: 1}
+  sweepColor: {r: 1, g: 0.92, b: 0.55, a: 1}
+  sweepHighlight: {r: 1, g: 1, b: 0.85, a: 1}
   sweepWidth: 0.08
   sweepIntensity: 0.56
   sweepSoftness: 0.04
@@ -713,6 +822,8 @@ MonoBehaviour:
   pulseSpeed: 1
   secondaryColor: {r: 1, g: 0.6, b: 0.3, a: 1}
   secondaryIntensity: 0.11
+  revealBoostMultiplier: 2.2
+  revealSettleDuration: 0.35
 --- !u!1 &780604548
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +920,8 @@ RectTransform:
   m_Children:
   - {fileID: 361410479}
   - {fileID: 537881354}
+  - {fileID: 1311053010}
+  - {fileID: 682071262}
   - {fileID: 1078825916}
   - {fileID: 693972389}
   - {fileID: 73017564}
@@ -1015,12 +1128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0abf1d3c8b0f5141a123a05026c40f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoLightEffect
-  glowColor: {r: 0, g: 1, b: 1, a: 1}
+  glowColor: {r: 1, g: 0.82, b: 0.2, a: 1}
   glowIntensity: 0.6
   glowPower: 1
   glowSize: 0.012
-  sweepColor: {r: 1, g: 1, b: 1, a: 1}
-  sweepHighlight: {r: 1, g: 0.95, b: 0.9, a: 1}
+  sweepColor: {r: 1, g: 0.92, b: 0.55, a: 1}
+  sweepHighlight: {r: 1, g: 1, b: 0.85, a: 1}
   sweepWidth: 0.08
   sweepIntensity: 0.4
   sweepSoftness: 0.04
@@ -1030,6 +1143,8 @@ MonoBehaviour:
   pulseSpeed: 1
   secondaryColor: {r: 1, g: 0.6, b: 0.3, a: 1}
   secondaryIntensity: 0.11
+  revealBoostMultiplier: 2.2
+  revealSettleDuration: 0.35
 --- !u!1 &1201284751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,6 +1242,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1311053009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1311053010}
+  - component: {fileID: 1311053012}
+  - component: {fileID: 1311053011}
+  - component: {fileID: 1311053013}
+  m_Layer: 5
+  m_Name: ScreenDimmer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1311053010
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311053009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 780604552}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.002533, y: 0.0010681}
+  m_SizeDelta: {x: 799.99, y: 464.33}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1311053011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311053009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1311053012
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311053009}
+  m_CullTransparentMesh: 1
+--- !u!114 &1311053013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311053009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1788bc3e1994a4e08b5aaa20e8314a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GachaScreenDimmer
+  maxDimAlpha: 0.65
+  dimColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1334663757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1466,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334663757}
   m_CullTransparentMesh: 1
+--- !u!1 &1395423827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1395423829}
+  - component: {fileID: 1395423828}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1395423828
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395423827}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1395423829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395423827}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 421.2526, y: 244.49908, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1270,3 +1604,4 @@ SceneRoots:
   - {fileID: 780604552}
   - {fileID: 560678559}
   - {fileID: 834584564}
+  - {fileID: 1395423829}
