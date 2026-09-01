@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93ebb64381a58c43a04b3a38510d854, type: 3}
+  m_Name: MediaGameConfig
+  m_EditorClassIdentifier: Assembly-CSharp::MediaGameConfig
+  targetScore: 1
+  timeLimit: 30
+  timeWarningThreshold: 5
+  lensSpeed: 10
+  lensRadius: 1.2
+  lensAcceleration: 15
+  lensDeceleration: 2
+  bounceMultiplier: 0.5
+  mascotSpeed: 5
+  mascotRadius: 0.5
+  mascotSpawnInterval: 1.5
+  maxActiveMascots: 4
+  spawnOverlapRadius: 1
+  perfectTolerance: 0.2
+  perfectText: PERFECT!
+  perfectColor: {r: 0, g: 1, b: 0, a: 1}
+  goodText: GOOD!
+  goodColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  missText: MISS!
+  missColor: {r: 1, g: 0, b: 0, a: 1}
