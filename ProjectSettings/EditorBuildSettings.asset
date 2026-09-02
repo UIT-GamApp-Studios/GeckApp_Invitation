@@ -12,13 +12,13 @@ EditorBuildSettings:
     path: Assets/Scences/Gacha.unity
     guid: 97e71c2b180e14178af5004c7e60206c
   - enabled: 1
-    path: Assets/Scene/MediaGameScene.unity
+    path: Assets/Scences/MediaGameScene.unity
     guid: 35e603a91a892d44da88f6fb155d63bf
   - enabled: 1
-    path: Assets/Scene/Scenes/DevGameScene.unity
+    path: Assets/Scences/DevGameScene.unity
     guid: 6ed2d2808c7f93a449333aa5f45c9b94
   - enabled: 1
-    path: Assets/Scene/Scenes/ArtGameScene.unity
+    path: Assets/Scences/ArtGameScene.unity
     guid: 936b912861994cd439586fcd0e60c93c
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
