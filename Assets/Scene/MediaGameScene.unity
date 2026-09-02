@@ -474,6 +474,7 @@ GameObject:
   - component: {fileID: 228061490}
   - component: {fileID: 228061489}
   - component: {fileID: 228061488}
+  - component: {fileID: 228061491}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -543,7 +544,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 228061489}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 228061491}
+        m_TargetAssemblyTypeName: PrivateSceneController, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainScreen
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &228061489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +595,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228061486}
   m_CullTransparentMesh: 1
+--- !u!114 &228061491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228061486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e4b218be62c20449ad9a4039648ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PrivateSceneController
+  gameplayScene: Gameplay
+  gachaSceneName: Gacha
+  gachaButton: {fileID: 0}
 --- !u!1 &280453827
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,8 +990,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneBGM
   bgmList:
   - trackName: 
-    clip: {fileID: 8300000, guid: 0166f2f011dedb54d92709e030016700, type: 3}
-    baseVolume: 0.25
+    clip: {fileID: 8300000, guid: 4de891a1f5245bf40b80ac0e6b654aea, type: 3}
+    baseVolume: 1
 --- !u!1 &614068327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,7 +1997,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.9263029, y: 0.9259259, z: 1}
+  m_LocalScale: {x: 0.9257365, y: 0.9259259, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1989804937}

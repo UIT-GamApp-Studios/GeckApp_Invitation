@@ -66,6 +66,7 @@ public class PhotoFeedbackUI : MonoBehaviour
             case PhotoResult.Miss:
                 feedbackText.text = config.missText;
                 feedbackText.color = config.missColor;
+                Debug.Log("Play");
                 if (missSound != null) missSound.PlaySound();
                 break;
         }

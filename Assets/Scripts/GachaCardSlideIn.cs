@@ -1,11 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Gắn script này vào từng lá bài (Image) trong scene Gacha.
-/// Đặt RectTransform của lá bài ở đúng VỊ TRÍ ĐÍCH mong muốn ngay trong Editor;
-/// khi chạy, script tự đẩy lá bài lên trên khung hình rồi trượt xuống vị trí đó.
-/// </summary>
 [RequireComponent(typeof(RectTransform))]
 public class GachaCardSlideIn : MonoBehaviour
 {
@@ -20,20 +15,27 @@ public class GachaCardSlideIn : MonoBehaviour
 
     private RectTransform rect;
     private Vector2 targetPos;
+    private bool isInitialized = false;
 
-    /// <summary>Thời gian trượt xuống (giây), dùng để GachaManager biết khi nào thẻ này trượt xong.</summary>
     public float SlideDuration => slideDuration;
 
     private void Awake()
     {
+        Init();
+    }
+
+    private void Init()
+    {
+        if (isInitialized) return;
         rect = GetComponent<RectTransform>();
-        // Vị trí đích = vị trí bạn đã đặt sẵn cho lá bài trong Editor
-        targetPos = rect.anchoredPosition;
+        targetPos = rect.anchoredPosition; // Lưu lại vị trí chuẩn đặt trong Editor
+        isInitialized = true;
     }
 
     private void OnEnable()
     {
-        // Đẩy lá bài lên trên, ngoài khung hình, chờ lệnh Play() để trượt xuống
+        Init();
+        // Đẩy lá bài lên trên ngoài khung hình để chuẩn bị trượt (khi gọi Play)
         rect.anchoredPosition = targetPos + new Vector2(0f, startOffsetY);
     }
 
@@ -41,6 +43,15 @@ public class GachaCardSlideIn : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(SlideRoutine(delay));
+    }
+
+    // HÀM MỚI: Nhảy thẳng về vị trí đích (dành cho lần vào Gacha thứ 2 trở đi)
+    public void SnapToFinalPosition()
+    {
+        Init();
+        StopAllCoroutines();
+        gameObject.SetActive(true);
+        rect.anchoredPosition = targetPos; // Ép lá bài về đúng vị trí đích ngay lập tức
     }
 
     private IEnumerator SlideRoutine(float delay)

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mascot
   config: {fileID: 11400000, guid: d113872910029f14b905b4f0cc44b91a, type: 2}
-  perfectParticlePrefab: {fileID: 0}
+  perfectParticlePrefab: {fileID: 5024009746357069192, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
 --- !u!58 &7931655104712287442
 CircleCollider2D:
   m_ObjectHideFlags: 0
