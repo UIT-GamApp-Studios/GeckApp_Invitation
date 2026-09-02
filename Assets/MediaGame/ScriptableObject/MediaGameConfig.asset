@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93ebb64381a58c43a04b3a38510d854, type: 3}
   m_Name: MediaGameConfig
   m_EditorClassIdentifier: Assembly-CSharp::MediaGameConfig
-  targetScore: 1
+  targetScore: 10
   timeLimit: 30
   timeWarningThreshold: 5
   lensSpeed: 10
@@ -20,10 +20,10 @@ MonoBehaviour:
   lensAcceleration: 15
   lensDeceleration: 2
   bounceMultiplier: 0.5
-  mascotSpeed: 5
+  mascotSpeed: 4.5
   mascotRadius: 0.5
-  mascotSpawnInterval: 1.5
-  maxActiveMascots: 4
+  mascotSpawnInterval: 0.8
+  maxActiveMascots: 5
   spawnOverlapRadius: 1
   perfectTolerance: 0.2
   perfectText: PERFECT!

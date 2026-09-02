@@ -3,10 +3,20 @@ using UnityEngine;
 public class Mascot : MonoBehaviour
 {
     [SerializeField] private MediaGameConfig config;
+    [SerializeField] private ParticleSystem perfectParticlePrefab;
 
     public bool IsCaptured { get; private set; } = false;
-
     private float destroyYThreshold;
+
+    private void OnEnable()
+    {
+        GameEvents.OnPhotoTaken += HandlePhotoTaken;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnPhotoTaken -= HandlePhotoTaken;
+    }
 
     public void Initialize(MediaGameConfig gameConfig, float topBoundaryY)
     {
@@ -27,9 +37,7 @@ public class Mascot : MonoBehaviour
     public PhotoResult EvaluatePhotoQuality(Vector2 lensCenter, float lensRadius)
     {
         float distance = Vector2.Distance(transform.position, lensCenter);
-        
         float perfectMaxDistance = (lensRadius - config.mascotRadius) + config.perfectTolerance;
-        
         float goodMaxDistance = lensRadius + config.mascotRadius;
 
         if (distance <= perfectMaxDistance)
@@ -47,5 +55,16 @@ public class Mascot : MonoBehaviour
     public void MarkAsCaptured()
     {
         IsCaptured = true;
+    }
+
+    private void HandlePhotoTaken(PhotoResult result, int scoreAdded, int currentScore)
+    {
+        if (result == PhotoResult.Perfect && IsCaptured && perfectParticlePrefab != null)
+        {
+            ParticleSystem effectInstance = Instantiate(perfectParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(effectInstance.gameObject, effectInstance.main.duration + effectInstance.main.startLifetime.constantMax);
+
+            IsCaptured = false; 
+        }
     }
 }

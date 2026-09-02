@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8678565339752881271}
   - component: {fileID: 4118829426489997895}
   - component: {fileID: 251789929846989543}
-  - component: {fileID: 7286674362216513141}
   m_Layer: 0
   m_Name: GreenMascot
   m_TagString: Untagged
@@ -129,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mascot
   config: {fileID: 11400000, guid: d113872910029f14b905b4f0cc44b91a, type: 2}
+  perfectParticlePrefab: {fileID: 0}
 --- !u!58 &251789929846989543
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -165,16 +165,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.07558325, y: 0.811158}
   m_Radius: 4.3157744
---- !u!114 &7286674362216513141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8744323454515573280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c639d6f60609b5458c9773f45d45087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MascotEffectSpawner
-  perfectParticlePrefab: {fileID: 5024009746357069192, guid: ec3f674830402cc45bce805cf6493db7, type: 3}

@@ -8,7 +8,6 @@ public class PrivateSceneController : MonoBehaviour
     public void ChangeScene(string sceneName)
     {   
         SceneTransition.Instance.PlayTransition(() => {Time.timeScale = 1f; SceneManager.LoadScene(sceneName); });
-        Debug.Log("YES");
     }
 
     public void PlayGame()
