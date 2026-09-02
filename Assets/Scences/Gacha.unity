@@ -549,15 +549,15 @@ MonoBehaviour:
   cardImages:
   - {fileID: 73017567}
   - {fileID: 1078825918}
-  - {fileID: 693972387}
+  - {fileID: 1237966631}
   cardSlides:
   - {fileID: 73017566}
   - {fileID: 1078825919}
-  - {fileID: 693972390}
+  - {fileID: 1237966630}
   cardSpecialEffects:
   - {fileID: 73017568}
   - {fileID: 1078825920}
-  - {fileID: 693972391}
+  - {fileID: 1237966629}
   delayBetweenCards: 2
   screenDimmer: {fileID: 1311053013}
   dimFadeInDuration: 0.4
@@ -680,150 +680,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &693972386
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 693972389}
-  - component: {fileID: 693972388}
-  - component: {fileID: 693972390}
-  - component: {fileID: 693972387}
-  - component: {fileID: 693972391}
-  m_Layer: 5
-  m_Name: CardSlot3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &693972387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693972386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &693972388
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693972386}
-  m_CullTransparentMesh: 1
---- !u!224 &693972389
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693972386}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1721789338}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 222.21387, y: 364.1393}
-  m_Pivot: {x: 1, y: 0.5}
---- !u!114 &693972390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693972386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09da2d8ddd80246318a340b6f80cd4b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GachaCardSlideIn
-  slideDuration: 0.5
-  startOffsetY: 1000
-  easeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &693972391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693972386}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0abf1d3c8b0f5141a123a05026c40f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LogoLightEffect
-  glowColor: {r: 1, g: 0.82, b: 0.2, a: 1}
-  glowIntensity: 0.6
-  glowPower: 1.5
-  glowSize: 0.012
-  sweepColor: {r: 1, g: 0.92, b: 0.55, a: 1}
-  sweepHighlight: {r: 1, g: 1, b: 0.85, a: 1}
-  sweepWidth: 0.08
-  sweepIntensity: 0.56
-  sweepSoftness: 0.04
-  sweepSpeed: 0.8
-  sweepDirection: 1
-  pulseIntensity: 0.08
-  pulseSpeed: 1
-  secondaryColor: {r: 1, g: 0.6, b: 0.3, a: 1}
-  secondaryIntensity: 0.11
-  revealBoostMultiplier: 2.2
-  revealSettleDuration: 0.35
 --- !u!1 &780604548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,6 +1096,150 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1237966626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237966627}
+  - component: {fileID: 1237966628}
+  - component: {fileID: 1237966630}
+  - component: {fileID: 1237966631}
+  - component: {fileID: 1237966629}
+  m_Layer: 5
+  m_Name: CardSlot3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1237966627
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237966626}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1721789338}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 263, y: 0}
+  m_SizeDelta: {x: 222.21387, y: 364.1393}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1237966628
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237966626}
+  m_CullTransparentMesh: 1
+--- !u!114 &1237966629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237966626}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0abf1d3c8b0f5141a123a05026c40f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LogoLightEffect
+  glowColor: {r: 1, g: 0.82, b: 0.2, a: 1}
+  glowIntensity: 0.6
+  glowPower: 1
+  glowSize: 0.012
+  sweepColor: {r: 1, g: 0.92, b: 0.55, a: 1}
+  sweepHighlight: {r: 1, g: 1, b: 0.85, a: 1}
+  sweepWidth: 0.08
+  sweepIntensity: 0.4
+  sweepSoftness: 0.04
+  sweepSpeed: 0.8
+  sweepDirection: 1
+  pulseIntensity: 0.08
+  pulseSpeed: 1
+  secondaryColor: {r: 1, g: 0.6, b: 0.3, a: 1}
+  secondaryIntensity: 0.11
+  revealBoostMultiplier: 2.2
+  revealSettleDuration: 0.35
+--- !u!114 &1237966630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237966626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09da2d8ddd80246318a340b6f80cd4b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GachaCardSlideIn
+  slideDuration: 0.5
+  startOffsetY: 1000
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1237966631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237966626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1311053009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,7 +1656,7 @@ RectTransform:
   m_Children:
   - {fileID: 73017564}
   - {fileID: 1078825916}
-  - {fileID: 693972389}
+  - {fileID: 1237966627}
   m_Father: {fileID: 780604552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
